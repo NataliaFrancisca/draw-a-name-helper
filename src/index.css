@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-custom-gradient {
+    @apply from-gradient-yellow via-gradient-red to-gradient-purple;
+  }
+}
+
+body, h1, h2, h3, p, label, span, legend, button{
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body{
+  background: linear-gradient(180deg, rgba(252,176,69,1) 0%, rgba(253,29,29,1) 50%, rgba(131,58,180,1) 100%);
+  min-height: 100dvh;
+}
