@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { getLocalStorage, setLocalStorage } from "../service/localStorageService";
 
 export const useHandleCrud = () => {
+    const storage = getLocalStorage();
+
     const [userInputValue, setUserInputValue] = useState('');
-    const [userValues, setUserInputValues] = useState<Array<string>>([]);
+    const [userValues, setUserInputValues] = useState<Array<string>>([...storage]);
 
     const [error, setError] = useState<boolean | string>(false);
 
@@ -15,12 +18,14 @@ export const useHandleCrud = () => {
         }
 
         setUserInputValues((prev) => [...prev, userInputValue]);
+        setLocalStorage([...userValues, userInputValue]);
         setError(false);
         return true;
     }
 
     const remove = (value: string) => {
         const updatedValue = userValues.filter((name) => name !== value);
+        setLocalStorage(updatedValue);
         setUserInputValues(updatedValue);
     }
 
