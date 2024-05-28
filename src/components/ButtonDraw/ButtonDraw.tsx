@@ -1,22 +1,22 @@
 type CallbackButtonFunction = () => void;
 
-interface IButtonSort{
-    sortValue: CallbackButtonFunction,
+interface IButtonDraw{
+    drawName: CallbackButtonFunction,
     values: Array<string>
 }
 
-const ButtonSort = (props: IButtonSort) => {
+const ButtonDraw = (props: IButtonDraw) => {
     return(
-        <div className="bg-button-gradient rounded-full w-[200px] h-[200px] flex justify-center p-1 mx-auto">
+        <div className="bg-button-gradient rounded-full w-[220px] h-[220px] flex justify-center p-1 mx-auto">
             <button 
                 className="rounded-full bg-black text-4xl text-white w-full cursor-pointer disabled:cursor-not-allowed" 
-                onClick={() => props.sortValue()}
+                onClick={() => props.drawName()}
                 disabled={props.values.length === 0}
             >
-                    SORT
+                    DRAW 
             </button>
         </div>
     )
 }
 
-export default ButtonSort;
+export default ButtonDraw;

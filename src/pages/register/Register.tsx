@@ -12,7 +12,7 @@ export const Register = () => {
 
             <section className="gap-8 flex flex-col">
                 <form className="flex flex-col gap-2" onSubmit={(e) => onSubmit(e)}>
-                    <legend className="font-bold text-xl">TYPE A VALUE:</legend>
+                    <legend className="font-bold text-xl">TYPE A NAME:</legend>
                     <input 
                         type="text" 
                         className="w-full py-3 px-4 rounded-md"
@@ -26,7 +26,7 @@ export const Register = () => {
                 {userValues.length > 0 && <RegisteredList names={userValues} remove={remove} /> }
             </section>
 
-            <button className="bg-white py-4 leading-none rounded-md w-6/12 font-bold text-xl self-end" onClick={() => onNavigate('/sort')}>NEXT</button>
+            <button className="bg-white py-4 leading-none rounded-md w-6/12 font-bold text-xl self-end" onClick={() => onNavigate('/view')}>NEXT</button>
         </main>
     )
 }

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { Register } from "../pages/register/Register";
-import Sort from "../pages/sort/Sort";
+import View from "../pages/view/view";
 
 export const router = createBrowserRouter([
     {
@@ -15,8 +15,8 @@ export const router = createBrowserRouter([
     },
 
     {
-      path: '/sort',
-      element: <Sort />
+      path: '/view',
+      element: <View />
     }
 ]);
   
