@@ -1,21 +1,11 @@
-import { FormEvent } from "react"
-import { useHandleCrud } from "../../hooks/useHandleCrud";
-import Name from "../../components/Name/Name";
+import { useHandleCrud } from "../../hooks/useRegister";
 import { useNavigate } from "react-router-dom";
+import RegisteredList from "../../components/NameList/RegisteredList";
 
 export const Register = () => {
 
-    const { error, userValues, remove, set, setUserInputValue } = useHandleCrud();
+    const { error, userValues, remove, setUserInputValue, onSubmit } = useHandleCrud();
     const onNavigate = useNavigate();
-
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e?.preventDefault();
-        const response = set();
-
-        if(response){
-            e.currentTarget.reset();
-        }
-    }
 
     return(
         <main className="bg-custom-gradient min-h-screen p-10 gap-8 flex flex-col md:w-2/6 md:m-auto justify-between"> 
@@ -31,14 +21,9 @@ export const Register = () => {
                     />
 
                     {error && <p>{error}</p>}
-
                 </form>
 
-                {userValues.length > 0 && 
-                    userValues.map((value, key) => (
-                        <Name value={value} remove={remove} key={key} />
-                    ))
-                }
+                {userValues.length > 0 && <RegisteredList names={userValues} remove={remove} /> }
             </section>
 
             <button className="bg-white py-4 leading-none rounded-md w-6/12 font-bold text-xl self-end" onClick={() => onNavigate('/sort')}>NEXT</button>
