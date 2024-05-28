@@ -3,17 +3,14 @@ import { getLocalStorage } from "../service/localStorageService";
 import { getMathRandomValue } from "../utils/random-value";
 
 export const useSortValue = () => {
-    const storage = getLocalStorage();
+    const storage = getLocalStorage() as Array<string>;
 
-    const [sortedValue, setSortedValue] = useState('');
+    const [sortedValue, setSortedValue] = useState<string | boolean>(false);
     const [sortedValues, setSortedValues] = useState<Array<string>>([]);
     
     const [values, setValues] = useState<Array<string>>(storage);
 
     const sortValue = () => {
-
-        console.log("SORT VALUE", values);
-
         if(values.length == 0){
             return false;
         }
@@ -32,5 +29,15 @@ export const useSortValue = () => {
         setValues(updatedArray);
     }
 
-    return { values, sortedValue, sortedValues, sortValue }
+    const componentMessage = () => {
+        if(storage.length === 0){
+            return "You don't have any value saved"
+        }
+
+        if(values.length === 0){
+            return "ALL VALUES WERE SORTED"
+        }
+    }
+
+    return { values, sortedValue, sortedValues, sortValue, componentMessage}
 };
