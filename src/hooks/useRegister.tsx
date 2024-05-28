@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { getLocalStorage, setLocalStorage } from "../service/localStorageService";
 
 export const useHandleCrud = () => {
@@ -29,6 +29,15 @@ export const useHandleCrud = () => {
         setUserInputValues(updatedValue);
     }
 
-    return { set, remove, setUserInputValue, error, userValues }
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e?.preventDefault();
+        const response = set();
+
+        if(response){
+            e.currentTarget.reset();
+        }
+    }
+
+    return { storage, remove, setUserInputValue, onSubmit, error, userValues }
 
 }

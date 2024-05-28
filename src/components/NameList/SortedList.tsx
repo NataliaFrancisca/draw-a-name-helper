@@ -1,4 +1,4 @@
-const NameList = (props: {names: Array<string>}) => {
+const SortedList = (props: {names: Array<string>}) => {
 
     return(
        <section className="flex flex-col bg-button-transparent p-6 rounded-md">
@@ -6,9 +6,8 @@ const NameList = (props: {names: Array<string>}) => {
 
             <ul className="list-decimal list-inside" role="list">
                 {props.names.map((value, key) => ( 
-                    <li className="marker:font-bold uppercase text-lg"
-                        key={key}>
-                            {value}
+                    <li className="marker:font-bold uppercase text-lg" key={key}>
+                        {value}
                     </li>
                 ))}
             </ul>
@@ -16,4 +15,4 @@ const NameList = (props: {names: Array<string>}) => {
     )
 }
 
-export default NameList;
+export default SortedList;
